@@ -1,0 +1,157 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 240 10% 97%; /* Bege claro / Quase branco */
+  --foreground: 40 5% 15%; /* Preto suave */
+  
+  --card: 240 10% 98%; /* Um pouco mais escuro que o fundo para contraste sutil */
+  --card-foreground: 40 5% 15%;
+  
+  --popover: 240 10% 99%;
+  --popover-foreground: 40 5% 15%;
+  
+  --primary: 40 5% 10%; /* Preto para botões principais */
+  --primary-foreground: 240 10% 98%; /* Texto claro para botões pretos */
+  
+  --secondary: 240 5% 90%; /* Cinza claro para elementos secundários */
+  --secondary-foreground: 40 5% 20%;
+  
+  --muted: 240 5% 85%;
+  --muted-foreground: 40 5% 40%; /* Texto silenciado mais escuro */
+  
+  --accent: 40 60% 50%; /* Um toque de cor, talvez um marrom do logo se houver, ou manter neutro */
+  --accent-foreground: 240 10% 98%;
+  
+  --destructive: 0 70% 50%; /* Vermelho para ações destrutivas */
+  --destructive-foreground: 0 0% 98%;
+  
+  --border: 240 5% 88%; /* Borda sutil */
+  --input: 240 5% 92%; /* Fundo do input um pouco diferente */
+  --ring: 40 5% 15%; /* Cor do anel de foco, preto */
+  
+  --radius: 0.5rem;
+}
+
+.dark {
+  /* Mantendo as cores claras por enquanto, conforme o logo. Se precisar de dark mode real, ajustar aqui */
+  --background: 40 5% 12%; 
+  --foreground: 240 10% 95%;
+  
+  --card: 40 5% 15%;
+  --card-foreground: 240 10% 95%;
+  
+  --popover: 40 5% 10%;
+  --popover-foreground: 240 10% 95%;
+  
+  --primary: 240 10% 90%; 
+  --primary-foreground: 40 5% 10%; 
+  
+  --secondary: 40 5% 20%;
+  --secondary-foreground: 240 10% 90%;
+  
+  --muted: 40 5% 25%;
+  --muted-foreground: 240 10% 60%;
+  
+  --accent: 50 60% 55%; 
+  --accent-foreground: 40 5% 10%;
+  
+  --destructive: 0 60% 50%;
+  --destructive-foreground: 0 0% 98%;
+  
+  --border: 40 5% 20%;
+  --input: 40 5% 18%;
+  --ring: 240 10% 90%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-feature-settings: "rlig" 1, "calt" 1;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif; /* Uma fonte moderna e limpa */
+}
+
+.glass-effect { /* Para modo claro */
+  background: hsla(var(--card), 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid hsla(var(--border), 0.5);
+}
+
+.glass-effect-dark { /* Para cabeçalho, mesmo em modo claro, para destacar com o fundo claro */
+  background: hsla(var(--foreground), 0.05); /* Um preto bem sutil transparente */
+  backdrop-filter: blur(12px);
+  border: 1px solid hsla(var(--border), 0.3);
+}
+
+
+.gradient-text { /* Será preto sólido, mas mantemos a classe caso queira gradiente depois */
+  color: hsl(var(--foreground));
+}
+.gradient-text-dark { /* Para o logo no header */
+   color: hsl(var(--foreground)); /* Preto */
+}
+
+
+.card-hover {
+  transition: all 0.3s ease-in-out;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 45px -10px hsla(var(--foreground), 0.15);
+}
+
+.animate-float {
+  animation: float 7s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-opacity 3.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-opacity {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+
+.shopping-bag-animation {
+  animation: bagBounce 0.7s ease-out;
+}
+
+@keyframes bagBounce {
+  0% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.20) rotate(-3deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 10px;
+  border: 2px solid hsl(var(--muted));
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary), 0.8);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
